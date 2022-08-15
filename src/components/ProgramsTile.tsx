@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { StatusTags } from './StatusTags';
+import { useNavigation } from '@react-navigation/native';
 
 const programData = [
   {
@@ -41,6 +42,8 @@ export const ProgramsTile: React.FC<ProgramTileProps> = ({
   level,
   user,
 }) => {
+  const navigation = useNavigation();
+
   const tagColorSwitch = () => {
     switch (level) {
       case 'Beginner':
@@ -53,7 +56,13 @@ export const ProgramsTile: React.FC<ProgramTileProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={heading === 'Holistic Journey Program' ? 0.8 : 1}
+      onPress={() =>
+        heading === 'Holistic Journey Program' &&
+        navigation.navigate('HolisticProgram')
+      }
+      style={styles.container}>
       <Text style={[styles.topTag, { backgroundColor: tagColorSwitch() }]}>
         {level}
       </Text>
@@ -95,7 +104,7 @@ export const ProgramsTile: React.FC<ProgramTileProps> = ({
           <Text style={styles.amountDescText}>per month</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -152,11 +161,11 @@ const styles = StyleSheet.create({
   tileHeading: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#636363'
+    color: '#636363',
   },
   tileDesc: {
     fontSize: 13,
-    color: '#a7abad'
+    color: '#a7abad',
   },
   tags: {
     flexDirection: 'row',
@@ -172,7 +181,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 2,
     backgroundColor: '#f2e890',
-    color:'#7c745e',
+    color: '#7c745e',
     fontSize: 12.5,
   },
   imageContainer: {

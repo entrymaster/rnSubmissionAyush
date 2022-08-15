@@ -70,5 +70,6 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 9,
     textAlign: 'center',
+    color: '#b4b4b4'
   },
 });

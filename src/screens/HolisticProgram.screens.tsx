@@ -21,6 +21,7 @@ import PotIcon from '../assets/pot.svg';
 import { DurationTab } from '../components/DurationTab';
 import { ProgramsTile } from '../components/ProgramsTile';
 import { HeadingComponent } from '../components/HeadingComponent';
+import { useNavigation } from '@react-navigation/native';
 
 const programData = [
   {
@@ -64,6 +65,8 @@ const howDoesData = [
 ];
 
 export const HolisticProgram: React.FC = () => {
+  const navigation = useNavigation();
+
   const [activeTab, setActiveTab] = React.useState('home');
   const [duration, setDuration] = React.useState('Yearly');
   const offset = React.useRef(new Animated.Value(0)).current;
@@ -72,7 +75,9 @@ export const HolisticProgram: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.topBar}>
-          <TouchableOpacity style={styles.leftBtn}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.leftBtn}>
             <LeftIcon
               height={20}
               width={20}

@@ -44,8 +44,18 @@ export const TopBanner: React.FC<TopBannerProps> = ({ animatedValue }) => {
     extrapolate: 'clamp',
   });
 
+  const headerOpacity = animatedValue.interpolate({
+    inputRange: [0, HEADER_HEIGHT + insets.top - 100],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
   return (
-    <Animated.View style={[styles.container, { height: headerHeight }]}>
+    <Animated.View
+      style={[
+        styles.container,
+        { height: headerHeight, opacity: headerOpacity },
+      ]}>
       <Image
         source={require('../assets/treadmill.jpg')}
         style={styles.coverImage}
@@ -55,8 +65,7 @@ export const TopBanner: React.FC<TopBannerProps> = ({ animatedValue }) => {
           <View
             key={index}
             style={[styles.itemContainer, { backgroundColor: item.color }]}>
-            <Text
-              style={{ fontSize: 11, fontWeight: '600', color: item.keyColor }}>
+            <Text style={[styles.keyText, { color: item.keyColor }]}>
               {item.key}
             </Text>
             <Text style={styles.valueText}>{item.value}</Text>
@@ -90,6 +99,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '100%',
     width: '25%',
+  },
+  keyText: {
+    fontSize: 11,
+    fontWeight: '600',
   },
   valueText: {
     fontSize: 10.5,
