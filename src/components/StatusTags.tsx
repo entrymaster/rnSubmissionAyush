@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 10,
-    //   margin: 10,
     elevation: 3,
   },
   circle: {

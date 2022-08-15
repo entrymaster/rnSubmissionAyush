@@ -34,25 +34,23 @@ type ProgramTileProps = {
   heading: string;
   level: string;
   user: string;
-}
+};
 
 export const ProgramsTile: React.FC<ProgramTileProps> = ({
   heading,
   level,
   user,
 }) => {
-
   const tagColorSwitch = () => {
-
     switch (level) {
-      case "Beginner":
-        return "#0bbdbd"
-      case "Intermediate":
-        return "#cba737";
-      case "Advanced":
-        return "#ce5662";
+      case 'Beginner':
+        return '#0bbdbd';
+      case 'Intermediate':
+        return '#cba737';
+      case 'Advanced':
+        return '#ce5662';
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -107,6 +105,14 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 20,
     borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 15,
+    elevation: 2,
   },
   topContainer: {
     flexDirection: 'row',
@@ -120,8 +126,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     position: 'absolute',
     right: 0,
-    width:100,
-    textAlign:'center',
+    width: 100,
+    textAlign: 'center',
     borderBottomLeftRadius: 10,
     borderTopRightRadius: 10,
     paddingVertical: 3,
@@ -144,14 +150,16 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   tileHeading: {
-    fontSize: 17,
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#636363'
   },
   tileDesc: {
     fontSize: 13,
+    color: '#a7abad'
   },
-  tags:{
-    flexDirection: 'row'
+  tags: {
+    flexDirection: 'row',
   },
   tagContainer: {
     paddingTop: 8,
@@ -164,6 +172,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 2,
     backgroundColor: '#f2e890',
+    color:'#7c745e',
     fontSize: 12.5,
   },
   imageContainer: {
@@ -188,8 +197,8 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     paddingRight: 2,
   },
-  bottomContainer:{
+  bottomContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 });

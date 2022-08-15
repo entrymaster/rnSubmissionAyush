@@ -169,6 +169,6 @@ const styles = StyleSheet.create({
   },
   tabText: {
     paddingTop: 5,
-    fontSize: 10,
+    fontSize: 8,
   },
 });

@@ -31,7 +31,7 @@ export const Programs: React.FC = () => {
   return (
     <View style={styles.mainContainer}>
       <Header />
-      <ScrollView contentContainerStyle={{paddingBottom:65}}>
+      <ScrollView contentContainerStyle={styles.contentScroll}>
         <Activities
           selectedActivity={selectedActivity}
           setSelectedActivity={setSelectedActivity}
@@ -55,4 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.primary.backgroundColor,
   },
+  contentScroll:{
+    paddingBottom: 65
+  }
 });

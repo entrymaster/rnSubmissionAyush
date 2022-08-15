@@ -1,13 +1,18 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Programs } from './screens/Programs.screens';
+import { StyleSheet, SafeAreaView  } from 'react-native';
+import { HolisticProgram } from './screens/HolisticProgram.screens';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+// import { Programs } from './screens/Programs.screens';
 
 export const App: React.FC = () => {
 
   return (
-  <View style={styles.mainContainer}>
-    <Programs />
-  </View>
+    <SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1 }} forceInset={{ top: 'always' }}>
+    <HolisticProgram />
+    {/* <Programs /> */}
+  </SafeAreaView>
+  </SafeAreaProvider>
   );
 };
 
