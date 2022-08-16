@@ -3,46 +3,56 @@ import { View, Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { StatusTags } from './StatusTags';
 import { useNavigation } from '@react-navigation/native';
 
-const programData = [
-  {
-    icon: require('../assets/group2.png'),
-    text: '15 PT',
-    state: false,
-  },
-  {
-    icon: require('../assets/group2.png'),
-    text: '15 PT',
-    state: true,
-  },
-  {
-    icon: require('../assets/group3.png'),
-    text: '5 Group',
-    state: false,
-  },
-  {
-    icon: require('../assets/group3.png'),
-    text: '5 Group',
-    state: true,
-  },
-  {
-    icon: require('../assets/monitor.png'),
-    text: '5 Recorded',
-    state: true,
-  },
-];
-
 type ProgramTileProps = {
   heading: string;
   level: string;
   user: string;
+  ptoffline: number;
+  ptonline: number;
+  grouponline: number;
+  groupoffline: number;
+  recordedclasses: number;
 };
 
 export const ProgramsTile: React.FC<ProgramTileProps> = ({
   heading,
   level,
   user,
+  ptoffline,
+  ptonline,
+  grouponline,
+  groupoffline,
+  recordedclasses,
 }) => {
   const navigation = useNavigation();
+
+  const programData = [
+    {
+      icon: require('../assets/group2.png'),
+      value: ptoffline + ' PT',
+      state: false,
+    },
+    {
+      icon: require('../assets/group2.png'),
+      value: ptonline + ' PT',
+      state: true,
+    },
+    {
+      icon: require('../assets/group3.png'),
+      value: groupoffline + ' Group',
+      state: false,
+    },
+    {
+      icon: require('../assets/group3.png'),
+      value: grouponline + ' Group',
+      state: true,
+    },
+    {
+      icon: require('../assets/monitor.png'),
+      value: recordedclasses + ' Recorded',
+      state: true,
+    },
+  ];
 
   const tagColorSwitch = () => {
     switch (level) {
@@ -57,11 +67,8 @@ export const ProgramsTile: React.FC<ProgramTileProps> = ({
 
   return (
     <TouchableOpacity
-      activeOpacity={heading === 'Holistic Journey Program' ? 0.8 : 1}
-      onPress={() =>
-        heading === 'Holistic Journey Program' &&
-        navigation.navigate('HolisticProgram')
-      }
+      activeOpacity={0.8}
+      onPress={() => navigation.navigate('HolisticProgram')}
       style={styles.container}>
       <Text style={[styles.topTag, { backgroundColor: tagColorSwitch() }]}>
         {level}
@@ -94,7 +101,7 @@ export const ProgramsTile: React.FC<ProgramTileProps> = ({
             <StatusTags
               key={index}
               icon={item.icon}
-              text={item.text}
+              value={item.value}
               state={item.state}
             />
           ))}

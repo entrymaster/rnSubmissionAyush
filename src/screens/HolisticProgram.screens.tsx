@@ -22,47 +22,7 @@ import { DurationTab } from '../components/DurationTab';
 import { ProgramsTile } from '../components/ProgramsTile';
 import { HeadingComponent } from '../components/HeadingComponent';
 import { useNavigation } from '@react-navigation/native';
-
-const programData = [
-  {
-    icon: require('../assets/group2.png'),
-    text: '15 PT',
-    state: false,
-  },
-  {
-    icon: require('../assets/group2.png'),
-    text: '15 PT',
-    state: true,
-  },
-  {
-    icon: require('../assets/group3.png'),
-    text: '5 Group',
-    state: false,
-  },
-  {
-    icon: require('../assets/group3.png'),
-    text: '5 Group',
-    state: true,
-  },
-  {
-    icon: require('../assets/monitor.png'),
-    text: '5 Recorded',
-    state: true,
-  },
-];
-
-const howDoesData = [
-  {
-    value: 'Lorem ipsum dolor sit amet, consetetur',
-  },
-  {
-    value: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-  },
-  {
-    value:
-      'Lorem ipsum dolor sit amet, consetetursadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et',
-  },
-];
+import { programData, howDoesData } from '../data'
 
 export const HolisticProgram: React.FC = () => {
   const navigation = useNavigation();
@@ -105,7 +65,7 @@ export const HolisticProgram: React.FC = () => {
                 <StatusTags
                   key={index}
                   icon={item.icon}
-                  text={item.text}
+                  value={item.text}
                   state={item.state}
                 />
               ))}
@@ -137,6 +97,11 @@ export const HolisticProgram: React.FC = () => {
           <DurationTab duration={duration} setDuration={setDuration} />
         </View>
         <ProgramsTile
+          ptonline={15}
+          ptoffline={15}
+          grouponline={5}
+          groupoffline={5}
+          recordedclasses={5}
           heading={'Custom Programme'}
           level={'Beginner'}
           user={'Username'}

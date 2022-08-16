@@ -3,13 +3,13 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 type StatusTagsProps = {
   icon: NodeRequire;
-  text: string;
+  value: number;
   state: boolean;
 };
 
 export const StatusTags: React.FC<StatusTagsProps> = ({
   icon,
-  text,
+  value,
   state,
 }) => {
   return (
@@ -28,7 +28,7 @@ export const StatusTags: React.FC<StatusTagsProps> = ({
             ]}></View>
         </View>
       </View>
-      <Text style={styles.tagText}>{text}</Text>
+      <Text style={styles.tagText}>{value}</Text>
     </View>
   );
 };
@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 9,
     textAlign: 'center',
-    color: '#b4b4b4'
+    color: '#b4b4b4',
   },
 });
